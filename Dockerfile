@@ -55,4 +55,4 @@ LABEL links='{\
     }'
 LABEL requirements="core >= 1.1"
 
-ENTRYPOINT ["litestar", "--app", "main:app", "run", "--host", "0.0.0.0"]
+ENTRYPOINT ["litestar", "--app-dir", "/app", "--app", "main:app", "run", "--host", "0.0.0.0"]
