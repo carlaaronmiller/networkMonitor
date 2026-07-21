@@ -1,6 +1,7 @@
 FROM python:3.11-slim
 
 COPY app /app
+WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
 RUN python -m pip install /app --extra-index-url https://www.piwheels.org/simple
 
@@ -54,4 +55,4 @@ LABEL links='{\
     }'
 LABEL requirements="core >= 1.1"
 
-ENTRYPOINT litestar run --host 0.0.0.0
+ENTRYPOINT ["litestar", "--app", "main:app", "run", "--host", "0.0.0.0"]

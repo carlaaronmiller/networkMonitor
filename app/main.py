@@ -150,7 +150,7 @@ app = Litestar(
     route_handlers=[CountController, get_history],
     state=State({'bag_url': 'http://host.docker.internal/bag/v1.0'}),
     static_files_config=[
-        StaticFilesConfig(directories=['app/static'], path='/', html_mode=True)
+        StaticFilesConfig(directories=['static'], path='/', html_mode=True)
     ],
     logging_config=logging_config,
     lifespan=[sampling_lifespan],
