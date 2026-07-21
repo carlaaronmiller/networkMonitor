@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*
 RUN python -m pip install /app --extra-index-url https://www.piwheels.org/simple
 
-EXPOSE 8000/tcp
+EXPOSE 8020/tcp
 
 LABEL version="0.0.3"
 
@@ -14,14 +14,14 @@ ARG IMAGE_NAME
 LABEL permissions='\
 {\
   "ExposedPorts": {\
-    "8000/tcp": {}\
+    "8020/tcp": {}\
   },\
   "HostConfig": {\
     "Binds":["/usr/blueos/extensions/$IMAGE_NAME:/app/logs"],\
     "ExtraHosts": ["host.docker.internal:host-gateway"],\
     "NetworkMode": "host",\
     "PortBindings": {\
-      "8000/tcp": [\
+      "8020/tcp": [\
         {\
           "HostPort": ""\
         }\
@@ -55,4 +55,4 @@ LABEL links='{\
     }'
 LABEL requirements="core >= 1.1"
 
-ENTRYPOINT ["litestar", "--app-dir", "/app", "--app", "main:app", "run", "--host", "0.0.0.0"]
+ENTRYPOINT ["litestar", "--app-dir", "/app", "--app", "main:app", "run", "--host", "0.0.0.0", "--port", "8020"]
