@@ -1,7 +1,7 @@
 [project]
-name = "quickstart"
+name = "networkMonitor"
 version = "0.0.2"
-description = "BlueOS QuickStart Example Extension"
+description = "Tool to log and visualize traffic rates accross wifi and ethernet."
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
